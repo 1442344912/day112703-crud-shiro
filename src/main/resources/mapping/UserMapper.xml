@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.repository.UserMapper">
+    <resultMap type="com.qf.domain.User" id="userMap">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="sex" property="sex" />
+        <result column="birthday" property="birthday" />
+
+    </resultMap>
+
+   <!-- <sql id="tbusers_columns">
+        USERID,PASSWORD,LOGIN_NAME,CREATE_TIME,REALNAME,STATE
+    </sql>-->
+    <!--根据用户名查询对象  -->
+    <select id="findUserByUsername" parameterType="string" resultMap="userMap">
+        SELECT
+        *
+       <!-- <include refid="tbusers_columns"></include>-->
+        FROM
+        user
+        WHERE
+        username = #{username}
+    </select>
+</mapper>
